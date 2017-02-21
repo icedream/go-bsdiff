@@ -1,0 +1,33 @@
+package bsdiff
+
+import (
+	"compress/bzip2"
+	"io"
+	"io/ioutil"
+	"log"
+
+	"github.com/icedream/go-bsdiff/internal/native"
+)
+
+func Patch(oldReader io.Reader, newWriter io.Writer, patchReader io.Reader) (err error) {
+	oldBytes, err := ioutil.ReadAll(oldReader)
+	if err != nil {
+		return
+	}
+
+	newLen, err := readHeader(patchReader)
+	if err != nil {
+		return
+	}
+	newBytes := make([]byte, newLen)
+
+	log.Printf("Going to create a file of %d bytes.", newLen)
+
+	// Decompression
+	bz2Reader := bzip2.NewReader(patchReader)
+
+	err = native.Patch(oldBytes, newBytes, bz2Reader)
+
+	newWriter.Write(newBytes)
+	return
+}

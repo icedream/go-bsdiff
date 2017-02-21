@@ -1,0 +1,3 @@
+[submodule "bsdiff"]
+	path = bsdiff
+	url = https://github.com/mendsley/bsdiff.git
