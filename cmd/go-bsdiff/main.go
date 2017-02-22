@@ -4,16 +4,16 @@ import (
 	"log"
 	"os"
 
-	"github.com/icedream/go-bsdiff/patch"
+	"github.com/icedream/go-bsdiff/diff"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
-	cli = kingpin.New("go-bspatch", "Applies binary patches generated using the bsdiff algorithm.")
+	cli = kingpin.New("go-bsdiff", "Generates binary patches.")
 
 	argOld   = cli.Arg("old", "The old file.").Required().ExistingFile()
-	argNew   = cli.Arg("new", "Where the new file will be written to.").Required().File()
-	argPatch = cli.Arg("patch", "The patch file.").Required().ExistingFile()
+	argNew   = cli.Arg("new", "The new file.").Required().ExistingFile()
+	argPatch = cli.Arg("patch", "Where to output the patch file.").Required().File()
 )
 
 func must(err error) {
@@ -27,16 +27,16 @@ func must(err error) {
 func main() {
 	kingpin.MustParse(cli.Parse(os.Args[1:]))
 
-	newFile := *argNew
-	defer newFile.Close()
+	patchFile := *argPatch
+	defer patchFile.Close()
 
 	oldFile, err := os.Open(*argOld)
 	must(err)
 	defer oldFile.Close()
 
-	patchFile, err := os.Open(*argPatch)
+	newFile, err := os.Open(*argNew)
 	must(err)
-	defer patchFile.Close()
+	defer newFile.Close()
 
-	must(patch.Patch(oldFile, newFile, patchFile))
+	must(diff.Diff(oldFile, newFile, patchFile))
 }
