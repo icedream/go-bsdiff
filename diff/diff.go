@@ -1,10 +1,11 @@
-package bsdiff
+package diff
 
 import (
 	"io"
 	"io/ioutil"
 
 	"github.com/dsnet/compress/bzip2"
+	"github.com/icedream/go-bsdiff/internal"
 	"github.com/icedream/go-bsdiff/internal/native"
 )
 
@@ -18,7 +19,7 @@ func Diff(oldReader, newReader io.Reader, patchWriter io.Writer) (err error) {
 		return
 	}
 
-	if err = writeHeader(patchWriter, uint64(len(newBytes))); err != nil {
+	if err = internal.WriteHeader(patchWriter, uint64(len(newBytes))); err != nil {
 		return
 	}
 

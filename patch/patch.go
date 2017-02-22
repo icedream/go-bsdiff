@@ -1,4 +1,4 @@
-package bsdiff
+package patch
 
 import (
 	"compress/bzip2"
@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 
+	"github.com/icedream/go-bsdiff/internal"
 	"github.com/icedream/go-bsdiff/internal/native"
 )
 
@@ -15,7 +16,7 @@ func Patch(oldReader io.Reader, newWriter io.Writer, patchReader io.Reader) (err
 		return
 	}
 
-	newLen, err := readHeader(patchReader)
+	newLen, err := internal.ReadHeader(patchReader)
 	if err != nil {
 		return
 	}

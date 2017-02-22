@@ -1,4 +1,4 @@
-package bsdiff
+package internal
 
 import (
 	"encoding/binary"
@@ -14,7 +14,7 @@ var (
 	magicText = []byte("ENDSLEY/BSDIFF43")
 )
 
-func writeHeader(w io.Writer, size uint64) (err error) {
+func WriteHeader(w io.Writer, size uint64) (err error) {
 	if _, err = w.Write(magicText); err != nil {
 		return
 	}
@@ -22,7 +22,7 @@ func writeHeader(w io.Writer, size uint64) (err error) {
 	return
 }
 
-func readHeader(r io.Reader) (size uint64, err error) {
+func ReadHeader(r io.Reader) (size uint64, err error) {
 	magicBuf := make([]byte, len(magicText))
 	n, err := r.Read(magicBuf)
 	if err != nil {
