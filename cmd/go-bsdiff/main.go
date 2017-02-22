@@ -13,7 +13,7 @@ var (
 
 	argOld   = cli.Arg("old", "The old file.").Required().ExistingFile()
 	argNew   = cli.Arg("new", "The new file.").Required().ExistingFile()
-	argPatch = cli.Arg("patch", "Where to output the patch file.").Required().File()
+	argPatch = cli.Arg("patch", "Where to output the patch file.").Required().String()
 )
 
 func must(err error) {
@@ -27,7 +27,8 @@ func must(err error) {
 func main() {
 	kingpin.MustParse(cli.Parse(os.Args[1:]))
 
-	patchFile := *argPatch
+	patchFile, err := os.Create(*argPatch)
+	must(err)
 	defer patchFile.Close()
 
 	oldFile, err := os.Open(*argOld)
