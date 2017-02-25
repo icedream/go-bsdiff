@@ -77,7 +77,7 @@ out all information but in their simplest form, they can be used like this:
 # $your_old_file to $your_new_file.
 go-bsdiff "$your_old_file" "$your_new_file" "$the_generated"
 
-# Applies a patch file $the_generated on "your_old_file
+# Applies a patch file $the_generated on $your_old_file
 # and saves the new file to $your_new_file.
 go-bspatch "$your_old_file" "$your_new_file" "$the_generated"
 ```
