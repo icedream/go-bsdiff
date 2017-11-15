@@ -4,7 +4,6 @@ import (
 	"compress/bzip2"
 	"io"
 	"io/ioutil"
-	"log"
 
 	"github.com/icedream/go-bsdiff/internal"
 	"github.com/icedream/go-bsdiff/internal/native"
@@ -21,8 +20,6 @@ func Patch(oldReader io.Reader, newWriter io.Writer, patchReader io.Reader) (err
 		return
 	}
 	newBytes := make([]byte, newLen)
-
-	log.Printf("Going to create a file of %d bytes.", newLen)
 
 	// Decompression
 	bz2Reader := bzip2.NewReader(patchReader)
