@@ -35,3 +35,10 @@ func (bt *writerTable) Get(index int) io.Writer {
 
 	return bt.table[index]
 }
+
+func (bt *writerTable) Free(index int) {
+	bt.mutex.Lock()
+	defer bt.mutex.Unlock()
+
+	delete(bt.table, index)
+}

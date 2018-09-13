@@ -35,3 +35,10 @@ func (bt *readerTable) Get(index int) io.Reader {
 
 	return bt.table[index]
 }
+
+func (bt *readerTable) Free(index int) {
+	bt.mutex.Lock()
+	defer bt.mutex.Unlock()
+
+	delete(bt.table, index)
+}

@@ -17,6 +17,7 @@ func Diff(oldbytes, newbytes []byte, patch io.Writer) (err error) {
 	newptr, newsize := bytesToUint8PtrAndSize(newbytes)
 
 	bufferIndex := writers.Add(patch)
+	defer writers.Free(bufferIndex)
 
 	errCode := int(C.bsdiff_cgo(oldptr, oldsize, newptr, newsize, C.int(bufferIndex)))
 	if errCode != 0 {

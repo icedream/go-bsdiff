@@ -18,6 +18,7 @@ func Patch(oldbytes, newbytes []byte, patch io.Reader) (err error) {
 	newptr, newsize := bytesToUint8PtrAndSize(newbytes)
 
 	bufferIndex := readers.Add(patch)
+	defer readers.Free(bufferIndex)
 
 	errCode := int(C.bspatch_cgo(oldptr, oldsize, newptr, newsize, C.int(bufferIndex)))
 	if errCode != 0 {
