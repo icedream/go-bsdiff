@@ -87,3 +87,7 @@ go-bspatch "$your_old_file" "$your_new_file" "$the_generated"
 There is [a Go implementation of an older version of bsdiff called binarydist](https://github.com/kr/binarydist). The original bsdiff tool has since been updated so patches generating using the original tool are no longer compatible with the Go implementation. I don't know what the changes between the versions are and unfortunately I don't have the time to search for these changes and port them over as a pull request, otherwise I'd have done that instead.
 
 Additionally, @mendsley has already done the extra work of rewriting the code to be embeddable in any application code as a library. So why not make use of cgo, which I was going to look into in more detail at some point anyways?
+
+## License
+
+Just like bsdiff, this project is licensed under the 2-clause BSD license (or Simplified BSD license). You can check [LICENSE.txt](LICENSE.txt) for more information.
