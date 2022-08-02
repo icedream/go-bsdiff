@@ -1,6 +1,6 @@
 module github.com/icedream/go-bsdiff
 
-go 1.18
+go 1.19
 
 require (
 	github.com/dsnet/compress v0.0.1
