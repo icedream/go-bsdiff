@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/dsnet/compress v0.0.1
-	gopkg.in/alecthomas/kingpin.v2 v2.2.6
+	gopkg.in/alecthomas/kingpin.v2 v2.4.0
 )
 
 require (
