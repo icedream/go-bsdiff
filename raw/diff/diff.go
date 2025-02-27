@@ -6,7 +6,6 @@ package diff
 
 import (
 	"io"
-	"io/ioutil"
 
 	"github.com/icedream/go-bsdiff/internal/native"
 )
@@ -20,11 +19,11 @@ It may be helpful to save away the new content size along with the actual
 patch as it will be needed in order to reuse the patch.
 */
 func Diff(oldReader, newReader io.Reader, patchWriter io.Writer) (err error) {
-	oldBytes, err := ioutil.ReadAll(oldReader)
+	oldBytes, err := io.ReadAll(oldReader)
 	if err != nil {
 		return
 	}
-	newBytes, err := ioutil.ReadAll(newReader)
+	newBytes, err := io.ReadAll(newReader)
 	if err != nil {
 		return
 	}

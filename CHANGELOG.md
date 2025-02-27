@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 * Fix writer failure not being returned from `Patch` methods.
+* Remove all usages of the now deprecated `io/ioutil` package.
 
 ## [1.0.2] - 2025-02-27
 ### Changed

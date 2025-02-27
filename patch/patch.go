@@ -7,14 +7,13 @@ package patch
 import (
 	"compress/bzip2"
 	"io"
-	"io/ioutil"
 
 	"github.com/icedream/go-bsdiff/internal"
 	"github.com/icedream/go-bsdiff/internal/native"
 )
 
 func Patch(oldReader io.Reader, newWriter io.Writer, patchReader io.Reader) (err error) {
-	oldBytes, err := ioutil.ReadAll(oldReader)
+	oldBytes, err := io.ReadAll(oldReader)
 	if err != nil {
 		return
 	}

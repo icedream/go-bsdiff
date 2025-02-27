@@ -6,7 +6,6 @@ package patch
 
 import (
 	"io"
-	"io/ioutil"
 
 	"github.com/icedream/go-bsdiff/internal/native"
 )
@@ -20,7 +19,7 @@ newSize needs to be exactly the size of the new file that should be generated
 from the patch.
 */
 func Patch(oldReader io.Reader, newWriter io.Writer, patchReader io.Reader, newSize uint64) (err error) {
-	oldBytes, err := ioutil.ReadAll(oldReader)
+	oldBytes, err := io.ReadAll(oldReader)
 	if err != nil {
 		return
 	}
