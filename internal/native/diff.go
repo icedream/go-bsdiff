@@ -11,6 +11,7 @@ package native
 #include "cgo.h"
 */
 import "C"
+
 import (
 	"errors"
 	"io"

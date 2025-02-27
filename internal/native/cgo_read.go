@@ -8,6 +8,7 @@ package native
 #include "bspatch.h"
 */
 import "C"
+
 import (
 	"io"
 	"log"
@@ -15,8 +16,11 @@ import (
 )
 
 //export cgo_read_buffer
-func cgo_read_buffer(bufferIndex C.int,
-	bufPtr unsafe.Pointer, length C.int) C.int {
+func cgo_read_buffer(
+	bufferIndex C.int,
+	bufPtr unsafe.Pointer,
+	length C.int,
+) C.int {
 	goLength := int(length)
 
 	if goLength == 0 {

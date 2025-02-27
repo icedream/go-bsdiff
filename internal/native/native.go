@@ -8,6 +8,7 @@ package native
 #include <stdint.h>
 */
 import "C"
+
 import (
 	"reflect"
 	"unsafe"

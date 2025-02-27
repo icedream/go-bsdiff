@@ -8,8 +8,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/icedream/go-bsdiff/patch"
 	"github.com/alecthomas/kingpin/v2"
+	"github.com/icedream/go-bsdiff/patch"
 )
 
 var (
