@@ -9,7 +9,7 @@ import (
 	"os"
 
 	"github.com/icedream/go-bsdiff/patch"
-	"gopkg.in/alecthomas/kingpin.v2"
+	"github.com/alecthomas/kingpin/v2"
 )
 
 var (
