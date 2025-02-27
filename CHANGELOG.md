@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 * Updated license to reflect current year (2025)
 
+### Fixed
+* Fix writer failure not being returned from `Patch` methods.
+
 ## [1.0.2] - 2025-02-27
 ### Changed
 * Update kingpin v2 import path.

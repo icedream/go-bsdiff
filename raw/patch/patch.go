@@ -28,7 +28,10 @@ func Patch(oldReader io.Reader, newWriter io.Writer, patchReader io.Reader, newS
 	newBytes := make([]byte, newSize)
 
 	err = native.Patch(oldBytes, newBytes, oldReader)
+	if err != nil {
+		return err
+	}
 
-	newWriter.Write(newBytes)
+	_, err = newWriter.Write(newBytes)
 	return
 }
