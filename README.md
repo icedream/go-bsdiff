@@ -88,6 +88,8 @@ There is [a Go implementation of an older version of bsdiff called binarydist](h
 
 Additionally, @mendsley has already done the extra work of rewriting the code to be embeddable in any application code as a library. So why not make use of cgo, which I was going to look into in more detail at some point anyways?
 
+By now, there is also [TotallyGamerJet's purely Go implementation of bsdiff 4](https://github.com/TotallyGamerJet/bsdiff). It does not rely on cgo at all and may suit your use-case better.
+
 ## License
 
 Just like bsdiff, this project is licensed under the 2-clause BSD license (or Simplified BSD license). You can check [LICENSE.txt](LICENSE.txt) for more information.
