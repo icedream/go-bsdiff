@@ -28,12 +28,12 @@ func bytesToUint8PtrAndSize(bytes []byte) (ptr *C.uint8_t, size C.int64_t) {
 	return
 }
 
-func cPtrToSlice(ptr unsafe.Pointer, size int) []byte {
+func cPtrToSlice(ptr *byte, size int) []byte {
 	var slice []byte
 	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&slice))
 	sliceHeader.Cap = size
 	sliceHeader.Len = size
-	sliceHeader.Data = uintptr(ptr)
+	sliceHeader.Data = uintptr(unsafe.Pointer(ptr))
 
 	return slice
 }
