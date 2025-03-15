@@ -46,7 +46,7 @@ jobs:
           version: ${{ env.GOLANGCI_LINT_VERSION }}
 
       - name: Run tests
-        run: go run gotest.tools/gotestsum@latest --junitfile tests.xml --format pkgname -- -cover -race ./...
+        run: go run -mod=mod gotest.tools/gotestsum --junitfile tests.xml --format pkgname -- -cover -race ./...
 
       - name: Test Summary
         uses: test-summary/action@v2
