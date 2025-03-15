@@ -11,12 +11,11 @@ package native
 #include "bsdiff.h"
 */
 import "C"
-import "unsafe"
 
 //export cgo_write_buffer
 func cgo_write_buffer(
 	bufferIndex C.int,
-	dataPtr unsafe.Pointer,
+	dataPtr *byte,
 	size C.int,
 ) C.int {
 	buffer := writers.Get(int(bufferIndex))

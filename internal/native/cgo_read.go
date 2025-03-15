@@ -15,13 +15,12 @@ import "C"
 import (
 	"io"
 	"log"
-	"unsafe"
 )
 
 //export cgo_read_buffer
 func cgo_read_buffer(
 	bufferIndex C.int,
-	bufPtr unsafe.Pointer,
+	bufPtr *byte,
 	length C.int,
 ) C.int {
 	goLength := int(length)
