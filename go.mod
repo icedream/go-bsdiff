@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/alecthomas/kingpin/v2 v2.4.0
 	github.com/dsnet/compress v0.0.1
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	gotest.tools/gotestsum v1.12.0
 )
 
